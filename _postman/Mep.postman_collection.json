@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "2ec3ddd9-1953-4931-8c22-f2927dbb657a",
+		"name": "Mep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "meps",
+			"item": [
+				{
+					"name": "/meps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/meps",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/mep",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"PCC LIGHT 2.1\",\n\t\"project\":\"MyPost\",\n\t\"version\":\"3.1.alpha\",\n\t\"templateId\":\"test_template\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/meps",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{id}/apis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/apis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"apis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{id}/apis",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"odile-api\",\n\t\"maintainer\":\"TaSoeur\",\n\t\"type\":\"RANCHER\",\n\t\"oldVersion\": \"992.6\",\n\t\"newVersion\": \"999999.7\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/apis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"apis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{mepId}/apis/{apiId}/{field}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newValue\":\"Na2 ou bien ?\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/apis/odile-api/namespace",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"apis",
+								"odile-api",
+								"namespace"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{mepId}/apis/{apiId}/stepsets/{stepsetId}/steps/{stepId}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newStatus\":\"OK\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/apis/odile-api/stepsets/Set_1/steps/Step_1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"apis",
+								"odile-api",
+								"stepsets",
+								"Set_1",
+								"steps",
+								"Step_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{mepId}/{fieldName}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newValue\":\"nqsdfqs douveau nom du projet\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{mepId}/close",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/close",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/meps/{mepId}/open",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/meps/PCC_LIGHT_2_1/open",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meps",
+								"PCC_LIGHT_2_1",
+								"open"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "template",
+			"item": [
+				{
+					"name": "/templates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/templates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/templates/{templateId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/templates/test_template",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"templates",
+								"test_template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/templates",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"test template\",\n\t\"stepsets\": [\n\t\t{\n\t\t\t\"name\":\"Set 1\",\n\t\t\t\"order\": 1,\n\t\t\t\"steps\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 1\",\n\t\t\t\t\t\t\"order\": 1,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 2\",\n\t\t\t\t\t\t\"order\": 2,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 3\",\n\t\t\t\t\t\t\"order\": 3,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t},\t{\n\t\t\t\"name\":\"Set 2\",\n\t\t\t\"order\": 2,\n\t\t\t\"steps\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 4\",\n\t\t\t\t\t\t\"order\": 1,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 5\",\n\t\t\t\t\t\t\"order\": 2,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"name\": \"Step 6\",\n\t\t\t\t\t\t\"order\": 3,\n\t\t\t\t\t\t\"status\":\"NOK\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/templates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "status",
+			"item": [
+				{
+					"name": "/statuses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/statuses",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"statuses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

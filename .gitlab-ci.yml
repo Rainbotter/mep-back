@@ -1,0 +1,26 @@
+image: maven:3.5-jdk-8
+
+stages:
+  - build_jar
+  - build_image
+
+build_jar:
+  stage: build_jar
+  script:
+    - mvn package -B
+  artifacts:
+      paths:
+        - target/*.jar
+
+build_image:
+  image: docker:latest
+  stage: build_image
+  services:
+    - docker:dind
+  script:
+    - docker build --build-arg MONGO_URL=$MONGO_URL --build-arg MONGO_USER=$MONGO_USER --build-arg MONGO_PASS=$MONGO_PASS -t mepback .
+    - docker login https://registry.bober.ovh -u $REGISTRY_USER -p $REGISTRY_PASS
+    - docker tag mepback registry.bober.ovh/mepback
+    - docker push registry.bober.ovh/mepback
+  only:
+    - master
