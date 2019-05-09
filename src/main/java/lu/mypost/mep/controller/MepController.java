@@ -143,7 +143,7 @@ public class MepController {
     }
 
     @PutMapping({"/meps/{mepId}/apis/{apiId}/stepsets/{stepsetId}/steps/{stepId}"})
-    public ResponseEntity<ApiResponse> updateField(@PathVariable("mepId") String mepId,
+    public ResponseEntity<ApiResponse> updateStep(@PathVariable("mepId") String mepId,
                                                    @PathVariable("apiId") String apidId,
                                                    @PathVariable("stepsetId") String stepsetId,
                                                    @PathVariable("stepId") String stepId,
