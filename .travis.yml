@@ -11,9 +11,8 @@ services:
 script: mvn package -B
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker --version
-    docker build -t rainbowloutre/mep-back .
-    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push rainbowloutre/mep-back
-    fi
+  - docker --version
+  - docker build -t rainbowloutre/mep-back .
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker push rainbowloutre/mep-back;
+
