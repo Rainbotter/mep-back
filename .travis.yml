@@ -13,6 +13,6 @@ script: mvn package -B
 after_success:
   - docker --version
   - docker build -t rainbowloutre/mep-back .
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker push rainbowloutre/mep-back;
 
