@@ -4,7 +4,8 @@ language: java
 services:
   - docker
 
-script: mvn package -B
+script:
+  - ./scripts/build.sh
 
 after_success:
   - ./scripts/deploy.sh
