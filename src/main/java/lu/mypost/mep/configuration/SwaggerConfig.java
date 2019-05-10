@@ -33,7 +33,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     private TypeResolver resolver;
 
     @Autowired
-    Environment env;
+    private Environment env;
 
     @Bean
     public Docket productApi() {
@@ -42,6 +42,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .apis(RequestHandlerSelectors.basePackage("lu.mypost.mep.controller"))
                 .paths(PathSelectors.any())
                 .build()
+                .host("mep.bober.ovh/api")
                 .apiInfo(metaData())
                 .useDefaultResponseMessages(false)
                 .globalResponseMessage(RequestMethod.GET, getListOfErrorsMessage())
