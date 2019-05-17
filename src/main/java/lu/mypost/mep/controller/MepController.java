@@ -101,7 +101,7 @@ public class MepController {
 
     }
 
-    @GetMapping({"/meps/{mepId}/apis"})
+    @GetMapping({"/{mepId}/apis"})
     public ResponseEntity<List<ApiResponse>> getApis(@PathVariable("mepId") String mepId) throws NotFoundException {
 
         return ResponseEntity.ok(
@@ -111,7 +111,7 @@ public class MepController {
         );
     }
 
-    @PostMapping({"/meps/{mepId}/apis"})
+    @PostMapping({"/{mepId}/apis"})
     public ResponseEntity<ApiResponse> createApi(@PathVariable("mepId") String mepId,
                                                  @RequestBody @Valid final CreateApiRequest request) throws NotFoundException, CantBeModifiedException {
 
@@ -124,14 +124,14 @@ public class MepController {
         return ResponseEntity.created(URI.create("")).body(ApiMapper.createResponse(createdApi));
     }
 
-    @GetMapping({"/meps/{mepId}/apis/{apiId}"})
+    @GetMapping({"/{mepId}/apis/{apiId}"})
     public ResponseEntity<ApiResponse> getApi(@PathVariable("mepId") String mepId,
                                               @PathVariable("apiId") String apidId) throws NotFoundException {
 
         return ResponseEntity.ok(ApiMapper.createResponse(this.apiService.findById(mepId, apidId)));
     }
 
-    @PutMapping({"/meps/{mepId}/apis/{apiId}/{fieldName}"})
+    @PutMapping({"/{mepId}/apis/{apiId}/{fieldName}"})
     public ResponseEntity<ApiResponse> updateField(@PathVariable("mepId") String mepId,
                                                    @PathVariable("apiId") String apidId,
                                                    @PathVariable("fieldName") String fieldName,
@@ -142,7 +142,7 @@ public class MepController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping({"/meps/{mepId}/apis/{apiId}/stepsets/{stepsetId}/steps/{stepId}"})
+    @PutMapping({"/{mepId}/apis/{apiId}/stepsets/{stepsetId}/steps/{stepId}"})
     public ResponseEntity<ApiResponse> updateStep(@PathVariable("mepId") String mepId,
                                                    @PathVariable("apiId") String apidId,
                                                    @PathVariable("stepsetId") String stepsetId,
