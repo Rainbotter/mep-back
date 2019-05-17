@@ -1,6 +1,6 @@
 package lu.mypost.mep.mapper;
 
-import lu.mypost.mep.model.document.mep.Status;
+import lu.mypost.mep.model.enums.Status;
 import lu.mypost.mep.model.document.mep.Step;
 import lu.mypost.mep.model.document.mep.Stepset;
 import lu.mypost.mep.model.document.template.MepTemplate;

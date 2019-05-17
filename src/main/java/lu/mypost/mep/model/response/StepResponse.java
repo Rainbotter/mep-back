@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lu.mypost.mep.model.document.mep.Status;
+import lu.mypost.mep.model.enums.Status;
 
 import java.util.Objects;
 

@@ -4,7 +4,7 @@ import lu.mypost.mep.exception.CantBeModifiedException;
 import lu.mypost.mep.exception.NotFoundException;
 import lu.mypost.mep.model.document.mep.Api;
 import lu.mypost.mep.model.document.mep.Mep;
-import lu.mypost.mep.model.document.mep.Status;
+import lu.mypost.mep.model.enums.Status;
 import lu.mypost.mep.model.document.mep.Step;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

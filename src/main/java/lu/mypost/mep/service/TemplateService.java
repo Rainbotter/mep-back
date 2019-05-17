@@ -2,7 +2,7 @@ package lu.mypost.mep.service;
 
 import lu.mypost.mep.exception.AlreadyExistsException;
 import lu.mypost.mep.exception.NotFoundException;
-import lu.mypost.mep.model.document.mep.Status;
+import lu.mypost.mep.model.enums.Status;
 import lu.mypost.mep.model.document.mep.Step;
 import lu.mypost.mep.model.document.mep.Stepset;
 import lu.mypost.mep.model.document.template.MepTemplate;

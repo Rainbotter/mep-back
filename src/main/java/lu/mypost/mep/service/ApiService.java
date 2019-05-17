@@ -10,6 +10,7 @@ import lu.mypost.mep.model.document.mep.Type;
 import lu.mypost.mep.model.document.template.MepTemplate;
 import lu.mypost.mep.util.FieldsUtils;
 import lu.mypost.mep.util.StringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +65,8 @@ public class ApiService {
                 throw new UnsupportedOperationException("The api type " + type + "is not currently supported");
         }
 
-        api.setId(StringUtils.formatNameToId(apiName));
+        String suffix = RandomStringUtils.randomAlphabetic(10);
+        api.setId(StringUtils.formatNameToId(apiName + suffix));
         api.setName(apiName);
         api.setMaintainer(maintainer);
         api.setType(type);

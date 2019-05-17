@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +24,7 @@ public class Mep {
     private String name;
     private String project;
     private String version;
+    private Date dueDate;
     private Date lastModificationDate;
     private Date creationDate;
     private Date closureDate;
