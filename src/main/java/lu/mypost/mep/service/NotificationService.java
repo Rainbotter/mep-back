@@ -43,7 +43,7 @@ public class NotificationService {
                             c.getTime().compareTo(mep.getDueDate()) < 0;
                 })
                 .map(mep -> Notification.builder()
-                        .message("La mep " + mep.getName() + " approche et n'a toujours pas été fermée")
+                        .message("La mep " + mep.getName() + " approche et n'a toujours pas été complétée")
                         .subject(NotificationSubject.MEP)
                         .subjectId(mep.getId())
                         .build())
