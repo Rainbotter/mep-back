@@ -26,7 +26,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@PropertySource("classpath:project.properties")
+@PropertySource("classpath:application.properties")
 public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Autowired
