@@ -30,17 +30,16 @@ public class NotificationService {
     }
 
     private List<Notification> getShortDueDateMepsNotifications() {
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.DATE, 7);
+        Calendar reminderDate = Calendar.getInstance();
+        reminderDate.setTime(new Date());
+        reminderDate.add(Calendar.DATE, -7);
 
         return mepService.getAll()
                 .stream()
                 .filter(mep -> {
-
                     return mep.getDueDate() != null &&
                             mep.getClosureDate() != null &&
-                            c.getTime().compareTo(mep.getDueDate()) < 0;
+                            reminderDate.getTime().compareTo(mep.getDueDate()) < 0;
                 })
                 .map(mep -> Notification.builder()
                         .message("La mep " + mep.getName() + " approche et n'a toujours pas été complétée")

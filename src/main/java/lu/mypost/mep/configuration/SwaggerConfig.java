@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -24,6 +25,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Arrays;
 import java.util.List;
 
+import static lu.mypost.mep.configuration.Constants.Profiles.DEVELOPMENT;
+
 @Configuration
 @EnableSwagger2
 @PropertySource("classpath:application.properties")
@@ -37,12 +40,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Bean
     public Docket productApi() {
+        Profiles developmentProfile = Profiles.of(DEVELOPMENT);
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("lu.mypost.mep.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .host("mep.bober.ovh/api")
+                .host(env.acceptsProfiles(developmentProfile) ? null : "mep.bober.ovh/api")
                 .apiInfo(metaData())
                 .useDefaultResponseMessages(false)
                 .globalResponseMessage(RequestMethod.GET, getListOfErrorsMessage())

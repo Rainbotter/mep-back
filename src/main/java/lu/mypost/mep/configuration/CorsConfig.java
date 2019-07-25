@@ -6,9 +6,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import static lu.mypost.mep.configuration.Constants.Profiles.DEVELOPMENT;
+
 @Configuration
 @EnableWebMvc
-@Profile("development")
+@Profile(DEVELOPMENT)
 public class CorsConfig implements WebMvcConfigurer {
 
     @Override
