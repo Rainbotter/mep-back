@@ -1,5 +1,6 @@
 package lu.mypost.mep.service;
 
+import lombok.Synchronized;
 import lu.mypost.mep.exception.AlreadyExistsException;
 import lu.mypost.mep.exception.CantBeModifiedException;
 import lu.mypost.mep.exception.NotFoundException;
@@ -75,6 +76,7 @@ public class MepService {
         return result;
     }
 
+    @Synchronized
     public void updateField(String mepId, String fieldName, String newValue) throws NotFoundException, CantBeModifiedException {
 
         Mep mep = this.findById(mepId);

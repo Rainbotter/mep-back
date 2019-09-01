@@ -2,7 +2,7 @@ package lu.mypost.mep.model.response;
 
 import lombok.Getter;
 import lombok.Setter;
-import lu.mypost.mep.model.document.mep.Type;
+import lu.mypost.mep.model.enums.Type;
 
 import java.util.List;
 

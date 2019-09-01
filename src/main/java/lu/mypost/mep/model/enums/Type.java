@@ -1,4 +1,4 @@
-package lu.mypost.mep.model.document.mep;
+package lu.mypost.mep.model.enums;
 
 public enum Type {
 

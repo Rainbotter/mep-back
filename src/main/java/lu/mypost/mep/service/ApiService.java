@@ -1,13 +1,15 @@
 package lu.mypost.mep.service;
 
+import lombok.Synchronized;
 import lu.mypost.mep.exception.CantBeModifiedException;
 import lu.mypost.mep.exception.NotFoundException;
 import lu.mypost.mep.model.document.mep.Api;
 import lu.mypost.mep.model.document.mep.DockerApi;
 import lu.mypost.mep.model.document.mep.Mep;
 import lu.mypost.mep.model.document.mep.RancherApi;
-import lu.mypost.mep.model.document.mep.Type;
 import lu.mypost.mep.model.document.template.MepTemplate;
+import lu.mypost.mep.model.enums.Status;
+import lu.mypost.mep.model.enums.Type;
 import lu.mypost.mep.util.FieldsUtils;
 import lu.mypost.mep.util.StringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ApiService {
@@ -36,6 +39,7 @@ public class ApiService {
         return this.findApiFromMep(this.mepService.findById(mepId), apiId);
     }
 
+    @Synchronized
     public Api create(String mepId,
                       String apiName,
                       String maintainer,
@@ -45,7 +49,6 @@ public class ApiService {
 
         Mep mep = this.mepService.findById(mepId);
 
-
         if (mep.getClosureDate() != null) {
             throw new CantBeModifiedException("The mep is closed");
         }
@@ -54,12 +57,10 @@ public class ApiService {
 
         switch (type) {
             case DOCKER:
-                api = DockerApi.builder()
-                        .build();
+                api = DockerApi.builder().build();
                 break;
             case RANCHER:
-                api = RancherApi.builder()
-                        .build();
+                api = RancherApi.builder().build();
                 break;
             default:
                 throw new UnsupportedOperationException("The api type " + type + "is not currently supported");
@@ -82,6 +83,7 @@ public class ApiService {
         return api;
     }
 
+    @Synchronized
     public void updateField(String mepId, String apiId, String fieldName, String newValue) throws NotFoundException, CantBeModifiedException {
         Mep mep = this.mepService.findById(mepId);
         Api api = this.findApiFromMep(mep, apiId);
@@ -92,7 +94,25 @@ public class ApiService {
         }
 
         try {
-            FieldsUtils.updateField(api, fieldName, newValue);
+            Object effectiveNewValue;
+            Class newValueType = FieldsUtils.getFieldType(api, fieldName);
+            if (!Objects.equals(newValueType.getSimpleName(), "String")) {
+                // This should be improved in a way that removes that switch case
+                switch (newValueType.getSimpleName()) {
+                    case "Type":
+                        effectiveNewValue = Type.valueOf(newValue);
+                        break;
+                    case "Status":
+                        effectiveNewValue = Status.valueOf(newValue);
+                        break;
+                    default:
+                        throw new CantBeModifiedException("This field doesn't exists: " + newValueType.getSimpleName());
+                }
+            } else {
+                effectiveNewValue = newValue;
+            }
+
+            FieldsUtils.updateField(api, fieldName, effectiveNewValue);
             this.mepService.save(mep);
         } catch (ClassNotFoundException | IllegalAccessException e) {
             throw new InternalError("An error occured while updating the api");

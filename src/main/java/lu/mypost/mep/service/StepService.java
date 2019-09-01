@@ -1,5 +1,6 @@
 package lu.mypost.mep.service;
 
+import lombok.Synchronized;
 import lu.mypost.mep.exception.CantBeModifiedException;
 import lu.mypost.mep.exception.NotFoundException;
 import lu.mypost.mep.model.document.mep.Api;
@@ -21,6 +22,7 @@ public class StepService {
         this.apiService = apiService;
     }
 
+    @Synchronized
     public void updateStatus(String mepId, String apiId, String stepsetId, String stepId, Status newStatus) throws NotFoundException, CantBeModifiedException {
         Mep mep = this.mepService.findById(mepId);
         Api api = this.apiService.findApiFromMep(mep, apiId);

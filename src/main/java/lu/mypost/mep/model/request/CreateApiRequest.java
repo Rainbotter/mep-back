@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lu.mypost.mep.model.document.mep.Type;
+import lu.mypost.mep.model.enums.Type;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

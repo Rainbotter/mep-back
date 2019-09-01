@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FieldsUtils {
 
-    public static void updateField(Object object, String fieldName, String newValue) throws ClassNotFoundException, NotFoundException, IllegalAccessException {
+    public static void updateField(Object object, String fieldName, Object newValue) throws ClassNotFoundException, NotFoundException, IllegalAccessException {
         Field fieldToModify;
 
         List<Field> fields = Arrays.asList(ArrayUtils.addAll(
@@ -25,4 +25,21 @@ public class FieldsUtils {
 
         FieldUtils.writeField(fieldToModify, object, newValue, true);
     }
+
+    public static Class getFieldType(Object object, String fieldName) throws ClassNotFoundException, NotFoundException {
+        Field fieldToModify;
+
+        List<Field> fields = Arrays.asList(ArrayUtils.addAll(
+                Class.forName(object.getClass().getCanonicalName()).getDeclaredFields(),
+                Class.forName(object.getClass().getSuperclass().getCanonicalName()).getDeclaredFields())
+        );
+
+        fieldToModify = fields.stream()
+                .filter(field -> field.getName().equalsIgnoreCase(fieldName))
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException("Field " + fieldName + " doesn't exists in type Mep"));
+
+        return fieldToModify.getType();
+    }
+
 }

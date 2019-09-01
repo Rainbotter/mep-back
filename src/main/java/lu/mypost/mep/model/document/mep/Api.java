@@ -2,6 +2,7 @@ package lu.mypost.mep.model.document.mep;
 
 import lombok.Getter;
 import lombok.Setter;
+import lu.mypost.mep.model.enums.Type;
 
 import java.util.List;
 
