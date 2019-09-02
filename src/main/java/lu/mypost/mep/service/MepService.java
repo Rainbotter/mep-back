@@ -12,6 +12,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -95,7 +96,7 @@ public class MepService {
         try {
             FieldsUtils.updateField(mep, fieldName, newValue);
             this.save(mep);
-        } catch (ClassNotFoundException | IllegalAccessException e) {
+        } catch (ClassNotFoundException | IllegalAccessException | ParseException e) {
             throw new InternalError("An error occured while updating the mep");
         }
 

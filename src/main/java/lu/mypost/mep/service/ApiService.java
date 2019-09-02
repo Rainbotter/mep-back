@@ -16,6 +16,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Objects;
 
@@ -114,7 +115,7 @@ public class ApiService {
 
             FieldsUtils.updateField(api, fieldName, effectiveNewValue);
             this.mepService.save(mep);
-        } catch (ClassNotFoundException | IllegalAccessException e) {
+        } catch (ClassNotFoundException | IllegalAccessException | ParseException e) {
             throw new InternalError("An error occured while updating the api");
         }
     }
