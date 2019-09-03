@@ -26,10 +26,6 @@ public class CreateMepRequest {
 
     @NotNull
     @Size(min = 2)
-    private String version;
-
-    @NotNull
-    @Size(min = 2)
     private String templateId;
 
 }

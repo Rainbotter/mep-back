@@ -43,10 +43,7 @@ public class ApiService {
     @Synchronized
     public Api create(String mepId,
                       String apiName,
-                      String maintainer,
-                      Type type,
-                      String newVersion,
-                      String oldVersion) throws NotFoundException, CantBeModifiedException {
+                      Type type) throws NotFoundException, CantBeModifiedException {
 
         Mep mep = this.mepService.findById(mepId);
 
@@ -70,10 +67,7 @@ public class ApiService {
         String suffix = RandomStringUtils.randomAlphabetic(10);
         api.setId(StringUtils.formatNameToId(apiName + suffix));
         api.setName(apiName);
-        api.setMaintainer(maintainer);
         api.setType(type);
-        api.setNewVersion(newVersion);
-        api.setOldVersion(oldVersion);
 
         MepTemplate mepTemplate = this.templateService.findById(mep.getTemplateId());
         api.setStepsets(mepTemplate.getStepsets());

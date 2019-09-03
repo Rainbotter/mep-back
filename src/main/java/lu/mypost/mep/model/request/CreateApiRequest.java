@@ -22,14 +22,6 @@ public class CreateApiRequest {
     private String name;
 
     @NotNull
-    @Size(min = 2)
-    private String maintainer;
-
-    @NotNull
     private Type type;
-
-    private String oldVersion;
-
-    private String newVersion;
 
 }

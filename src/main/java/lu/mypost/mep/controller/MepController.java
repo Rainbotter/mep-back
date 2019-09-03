@@ -61,7 +61,7 @@ public class MepController {
     @PostMapping({""})
     public ResponseEntity<TruncatedMepResponse> createMep(@RequestBody @Valid final CreateMepRequest request) throws AlreadyExistsException, NotFoundException {
 
-        Mep createdMep = this.mepService.create(request.getName(), request.getProject(), request.getVersion(), request.getTemplateId());
+        Mep createdMep = this.mepService.create(request.getName(), request.getProject(), request.getTemplateId());
 
         return ResponseEntity.created(URI.create("")).body(MepMapper.createTruncatedResponse(createdMep));
     }
@@ -73,7 +73,7 @@ public class MepController {
     }
 
     @PutMapping({"/{mepId}/{fieldName}"})
-    public ResponseEntity<ApiResponse> updateField(@PathVariable("mepId") String mepId,
+    public ResponseEntity<MepResponse> updateField(@PathVariable("mepId") String mepId,
                                                    @PathVariable("fieldName") String fieldName,
                                                    @RequestBody @Valid final UpdateMepRequest request) throws NotFoundException, CantBeModifiedException {
 
@@ -84,20 +84,20 @@ public class MepController {
     }
 
     @PutMapping({"/{mepId}/close"})
-    public ResponseEntity<ApiResponse> closeMep(@PathVariable("mepId") String mepId) throws NotFoundException {
+    public ResponseEntity<MepResponse> closeMep(@PathVariable("mepId") String mepId) throws NotFoundException {
 
         this.mepService.closeMep(mepId);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(MepMapper.createResponse(this.mepService.findById(mepId)));
 
     }
 
     @PutMapping({"/{mepId}/open"})
-    public ResponseEntity<ApiResponse> openMep(@PathVariable("mepId") String mepId) throws NotFoundException {
+    public ResponseEntity<MepResponse> openMep(@PathVariable("mepId") String mepId) throws NotFoundException {
 
         this.mepService.openMep(mepId);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(MepMapper.createResponse(this.mepService.findById(mepId)));
 
     }
 
@@ -115,12 +115,7 @@ public class MepController {
     public ResponseEntity<ApiResponse> createApi(@PathVariable("mepId") String mepId,
                                                  @RequestBody @Valid final CreateApiRequest request) throws NotFoundException, CantBeModifiedException {
 
-        Api createdApi = this.apiService.create(mepId,
-                request.getName(),
-                request.getMaintainer(),
-                request.getType(),
-                request.getNewVersion(),
-                request.getOldVersion());
+        Api createdApi = this.apiService.create(mepId, request.getName(), request.getType());
         return ResponseEntity.created(URI.create("")).body(ApiMapper.createResponse(createdApi));
     }
 

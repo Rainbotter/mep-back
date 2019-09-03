@@ -52,7 +52,7 @@ public class MepService {
         return result;
     }
 
-    public Mep create(String name, String project, String version, String templateId) throws AlreadyExistsException, NotFoundException {
+    public Mep create(String name, String project, String templateId) throws AlreadyExistsException, NotFoundException {
         String suffix = RandomStringUtils.randomAlphabetic(10);
         String formattedName = StringUtils.formatNameToId(name + suffix);
 
@@ -66,7 +66,6 @@ public class MepService {
                 .id(formattedName)
                 .name(name)
                 .project(project)
-                .version(version)
                 .templateId(templateId)
                 .creationDate(new Date())
                 .apis(new ArrayList<>())
