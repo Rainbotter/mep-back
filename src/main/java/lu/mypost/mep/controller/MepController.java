@@ -9,6 +9,7 @@ import lu.mypost.mep.model.document.mep.Api;
 import lu.mypost.mep.model.document.mep.Mep;
 import lu.mypost.mep.model.request.CreateApiRequest;
 import lu.mypost.mep.model.request.CreateMepRequest;
+import lu.mypost.mep.model.request.RemoveApiRequest;
 import lu.mypost.mep.model.request.UpdateApiFieldRequest;
 import lu.mypost.mep.model.request.UpdateMepRequest;
 import lu.mypost.mep.model.request.UpdateStepStatusRequest;
@@ -20,6 +21,7 @@ import lu.mypost.mep.service.MepService;
 import lu.mypost.mep.service.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -126,6 +128,13 @@ public class MepController {
         return ResponseEntity.ok(ApiMapper.createResponse(this.apiService.findById(mepId, apidId)));
     }
 
+    @DeleteMapping({"/{mepId}/apis/{apiId}"})
+    public ResponseEntity<Object> removeAPi(@PathVariable("mepId") String mepId,
+                                            @PathVariable("apiId") String apidId) throws NotFoundException {
+
+        return ResponseEntity.ok(MepMapper.createResponse(this.mepService.removeApi(mepId, apidId)));
+    }
+
     @PutMapping({"/{mepId}/apis/{apiId}/{fieldName}"})
     public ResponseEntity<ApiResponse> updateField(@PathVariable("mepId") String mepId,
                                                    @PathVariable("apiId") String apidId,
@@ -139,10 +148,10 @@ public class MepController {
 
     @PutMapping({"/{mepId}/apis/{apiId}/stepsets/{stepsetId}/steps/{stepId}"})
     public ResponseEntity<ApiResponse> updateStep(@PathVariable("mepId") String mepId,
-                                                   @PathVariable("apiId") String apidId,
-                                                   @PathVariable("stepsetId") String stepsetId,
-                                                   @PathVariable("stepId") String stepId,
-                                                   @RequestBody @Valid final UpdateStepStatusRequest request) throws NotFoundException, CantBeModifiedException {
+                                                  @PathVariable("apiId") String apidId,
+                                                  @PathVariable("stepsetId") String stepsetId,
+                                                  @PathVariable("stepId") String stepId,
+                                                  @RequestBody @Valid final UpdateStepStatusRequest request) throws NotFoundException, CantBeModifiedException {
 
         this.stepService.updateStatus(mepId, apidId, stepsetId, stepId, request.getNewStatus());
 

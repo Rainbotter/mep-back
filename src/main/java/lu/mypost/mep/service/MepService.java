@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class MepService {
@@ -101,6 +103,18 @@ public class MepService {
 
     }
 
+    @Synchronized
+    public Mep removeApi(String mepId, String apiId) throws NotFoundException {
+        Mep mep = this.findById(mepId);
+
+        mep.setApis(mep.getApis().stream().filter(api -> !Objects.equals(api.getId(), apiId)).collect(Collectors.toList()));
+
+        this.save(mep);
+
+        return mep;
+    }
+
+    @Synchronized
     public void closeMep(String mepId) throws NotFoundException {
         Mep mep = this.findById(mepId);
 
@@ -109,8 +123,10 @@ public class MepService {
         mep.setClosureDate(closureDate);
 
         this.save(mep, closureDate);
+
     }
 
+    @Synchronized
     public void openMep(String mepId) throws NotFoundException {
         Mep mep = this.findById(mepId);
 
