@@ -24,6 +24,7 @@ public class MepResponse {
     private String id;
     private String name;
     private String project;
+    private String templateId;
     private String version;
     private List<ApiResponse> apis;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateSerializationFormat)

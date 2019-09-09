@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Builder
 @AllArgsConstructor
-public class RemoveApiRequest {
+public class DeleteApiRequest {
 
 }

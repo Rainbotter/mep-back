@@ -23,6 +23,7 @@ public class TruncatedMepResponse {
     private String id;
     private String name;
     private String project;
+    private String templateId;
     private String version;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateSerializationFormat)
     private Date creationDate;

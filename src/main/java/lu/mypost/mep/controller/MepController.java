@@ -9,7 +9,6 @@ import lu.mypost.mep.model.document.mep.Api;
 import lu.mypost.mep.model.document.mep.Mep;
 import lu.mypost.mep.model.request.CreateApiRequest;
 import lu.mypost.mep.model.request.CreateMepRequest;
-import lu.mypost.mep.model.request.RemoveApiRequest;
 import lu.mypost.mep.model.request.UpdateApiFieldRequest;
 import lu.mypost.mep.model.request.UpdateMepRequest;
 import lu.mypost.mep.model.request.UpdateStepStatusRequest;
