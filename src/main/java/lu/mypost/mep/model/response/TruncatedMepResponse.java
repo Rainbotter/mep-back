@@ -31,5 +31,7 @@ public class TruncatedMepResponse {
     private Date lastModificationDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateSerializationFormat)
     private Date closureDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateSerializationFormat)
+    private Date dueDate;
 
 }

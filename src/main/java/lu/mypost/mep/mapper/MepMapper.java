@@ -34,6 +34,7 @@ public class MepMapper {
                 .creationDate(mep.getCreationDate())
                 .lastModificationDate(mep.getLastModificationDate())
                 .closureDate(mep.getClosureDate())
+                .dueDate(mep.getDueDate())
                 .templateId(mep.getTemplateId())
                 .build();
     }

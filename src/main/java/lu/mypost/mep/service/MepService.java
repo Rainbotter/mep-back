@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -143,6 +144,10 @@ public class MepService {
     public void save(Mep mep) {
         mep.setLastModificationDate(new Date());
         this.mepRepository.save(mep);
+    }
+
+    public Set<String> getDistinctProjects() {
+        return this.getAll().stream().map(Mep::getProject).collect(Collectors.toSet());
     }
 
 }

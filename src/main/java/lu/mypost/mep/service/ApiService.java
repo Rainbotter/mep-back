@@ -17,8 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ApiService {
@@ -120,6 +123,10 @@ public class ApiService {
                 .filter(api -> apiId.equalsIgnoreCase(api.getId()))
                 .findFirst()
                 .orElseThrow(() -> new NotFoundException("Api with id " + apiId + " doesn't exists in mep " + mep.getId()));
+    }
+
+    public Set<String> getDistinctApis() {
+        return this.mepService.getAll().stream().map(Mep::getApis).flatMap(Collection::stream).map(Api::getName).collect(Collectors.toSet());
     }
 
 }
