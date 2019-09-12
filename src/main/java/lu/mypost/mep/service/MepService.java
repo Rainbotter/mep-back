@@ -7,7 +7,7 @@ import lu.mypost.mep.exception.NotFoundException;
 import lu.mypost.mep.model.document.mep.Mep;
 import lu.mypost.mep.repositoriy.MepRepository;
 import lu.mypost.mep.util.FieldsUtils;
-import lu.mypost.mep.util.StringUtils;
+import lu.mypost.mep.util.CustomStringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,7 +57,7 @@ public class MepService {
 
     public Mep create(String name, String project, String templateId) throws AlreadyExistsException, NotFoundException {
         String suffix = RandomStringUtils.randomAlphabetic(10);
-        String formattedName = StringUtils.formatNameToId(name + suffix);
+        String formattedName = CustomStringUtils.formatNameToId(name + suffix);
 
         templateService.findById(templateId);
 

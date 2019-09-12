@@ -35,5 +35,8 @@ public class MepResponse {
     private Date closureDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateSerializationFormat)
     private Date dueDate;
+    private String referant;
+    private String freeText;
+    private String jira;
 
 }

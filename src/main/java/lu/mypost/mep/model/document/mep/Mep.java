@@ -30,5 +30,8 @@ public class Mep {
     private Date closureDate;
     private List<Api> apis;
     private String templateId;
+    private String referant;
+    private String freeText;
+    private String jira;
 
 }

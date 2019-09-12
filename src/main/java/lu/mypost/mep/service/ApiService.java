@@ -11,7 +11,7 @@ import lu.mypost.mep.model.document.template.MepTemplate;
 import lu.mypost.mep.model.enums.Status;
 import lu.mypost.mep.model.enums.Type;
 import lu.mypost.mep.util.FieldsUtils;
-import lu.mypost.mep.util.StringUtils;
+import lu.mypost.mep.util.CustomStringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +68,7 @@ public class ApiService {
         }
 
         String suffix = RandomStringUtils.randomAlphabetic(10);
-        api.setId(StringUtils.formatNameToId(apiName + suffix));
+        api.setId(CustomStringUtils.formatNameToId(apiName + suffix));
         api.setName(apiName);
         api.setType(type);
 

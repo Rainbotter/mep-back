@@ -21,6 +21,9 @@ public class MepMapper {
                 .closureDate(mep.getClosureDate())
                 .dueDate(mep.getDueDate())
                 .templateId(mep.getTemplateId())
+                .referant(mep.getReferant())
+                .freeText(mep.getFreeText())
+                .jira(mep.getJira())
                 .build();
     }
 
@@ -36,6 +39,9 @@ public class MepMapper {
                 .closureDate(mep.getClosureDate())
                 .dueDate(mep.getDueDate())
                 .templateId(mep.getTemplateId())
+                .referant(mep.getReferant())
+                .freeText(mep.getFreeText())
+                .jira(mep.getJira())
                 .build();
     }
 }

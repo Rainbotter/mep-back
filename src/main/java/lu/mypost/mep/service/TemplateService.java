@@ -8,7 +8,7 @@ import lu.mypost.mep.model.document.mep.Stepset;
 import lu.mypost.mep.model.document.template.MepTemplate;
 import lu.mypost.mep.model.enums.Status;
 import lu.mypost.mep.repositoriy.TemplateRepository;
-import lu.mypost.mep.util.StringUtils;
+import lu.mypost.mep.util.CustomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +50,7 @@ public class TemplateService {
     }
 
     public MepTemplate create(String name) throws AlreadyExistsException {
-        String formattedName = StringUtils.formatNameToId(name);
+        String formattedName = CustomStringUtils.formatNameToId(name);
 
         if (this.repository.findById(formattedName).isPresent()) {
             throw new AlreadyExistsException("Template with name " + name + " already exists");
@@ -75,13 +75,13 @@ public class TemplateService {
             throw new AlreadyExistsException("Step set with order " + order + " already exists");
         }
 
-        if (result.getStepsets().stream().anyMatch(stepset -> stepset.getId().equalsIgnoreCase(StringUtils.formatNameToId(name)))) {
+        if (result.getStepsets().stream().anyMatch(stepset -> stepset.getId().equalsIgnoreCase(CustomStringUtils.formatNameToId(name)))) {
             throw new AlreadyExistsException("Step set with name " + name + " already exists");
         }
 
         result.getStepsets().add(
                 Stepset.builder()
-                        .id(StringUtils.formatNameToId(name))
+                        .id(CustomStringUtils.formatNameToId(name))
                         .name(name)
                         .order(order)
                         .steps(new ArrayList<>())
@@ -104,7 +104,7 @@ public class TemplateService {
 
         matchedStepset.getSteps().add(
                 Step.builder()
-                        .id(StringUtils.formatNameToId(name))
+                        .id(CustomStringUtils.formatNameToId(name))
                         .name(name)
                         .order(order)
                         .status(status)

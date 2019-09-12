@@ -7,14 +7,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 @RunWith(SpringRunner.class)
-public class StringUtilsTest {
+public class CustomStringUtilsTest {
 
     @Test
     public void formatNameToIdWithNoSpecialCharacterTest() {
 
         String input = "testWithNoSpecialCharacter";
         String expectedResult = "testWithNoSpecialCharacter";
-        String actualResult = StringUtils.formatNameToId(input);
+        String actualResult = CustomStringUtils.formatNameToId(input);
 
         assertEquals("Conversion of name with no special character failed", expectedResult, actualResult);
     }
@@ -24,7 +24,7 @@ public class StringUtilsTest {
 
         String input = "testWith SpecialCharacter";
         String expectedResult = "testWith_SpecialCharacter";
-        String actualResult = StringUtils.formatNameToId(input);
+        String actualResult = CustomStringUtils.formatNameToId(input);
 
         assertEquals("Conversion of name with space failed", expectedResult, actualResult);
     }
@@ -34,7 +34,7 @@ public class StringUtilsTest {
 
         String input = "testWith.SpecialCharacter";
         String expectedResult = "testWith_SpecialCharacter";
-        String actualResult = StringUtils.formatNameToId(input);
+        String actualResult = CustomStringUtils.formatNameToId(input);
 
         assertEquals("Conversion of name with dot failed", expectedResult, actualResult);
     }
@@ -44,7 +44,7 @@ public class StringUtilsTest {
 
         String input = "testWith. SpecialCharacter";
         String expectedResult = "testWith__SpecialCharacter";
-        String actualResult = StringUtils.formatNameToId(input);
+        String actualResult = CustomStringUtils.formatNameToId(input);
 
         assertEquals("Conversion of all handled characters failed", expectedResult, actualResult);
     }
